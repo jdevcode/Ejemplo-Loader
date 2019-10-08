@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css-loader.css">
+</head>
+
+<body>
+    <div id="modalCarga" class="loader loader-default" data-text>
+        <button onclick="abreModal()">Quitar</button>
+    </div>
+    <button onclick="cargacantones()">Poner</button>
+
+    <script>
+        const abreModal = () => {
+            let modal = document.getElementById('modalCarga')
+            let verifica = false
+
+            for (let i = 0; i < modal.classList.length; i++) {
+                if (modal.classList[i] == "is-active") {
+                    verifica = true
+                    break;
+                }
+            }
+
+            if (!verifica)
+                modal.classList.add("is-active")
+            else
+                modal.classList.remove("is-active")
+        }
+
+        function cargacantones() {
+            abreModal()
+
+            $.post("", {}, function(data) {
+                abreModal()
+            })
+
+        }
+    </script>
+</body>
+
+</html>
